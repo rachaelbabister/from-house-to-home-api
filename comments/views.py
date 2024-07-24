@@ -8,9 +8,9 @@ class CommentList(generics.ListCreateAPIView):
     """
     List comments or create a comment if logged in.
     """
+    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Comment.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -20,6 +20,6 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a comment if you own it.
     """
-    permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
+    serializer_class = CommentDetailSerializer
+    permission_classes = [IsOwnerOrReadOnly]
