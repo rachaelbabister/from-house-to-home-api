@@ -8,8 +8,8 @@ class FollowerList(generics.ListCreateAPIView):
     """
     List or create follower relationships when logged in.
     """
-    serializer_class = FollowerSerializer
     queryset = Follower.objects.all()
+    serializer_class = FollowerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
@@ -21,6 +21,6 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
     Retrieve a follower.
     'Destroy' a follower, i.e. unfollow someone if owner
     """
-    permission_classes = [IsOwnerOrReadOnly]
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
+    permission_classes = [IsOwnerOrReadOnly]
