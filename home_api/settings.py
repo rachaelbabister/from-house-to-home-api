@@ -209,7 +209,6 @@ STATIC_ROOT = 'staticfiles'
 
 # Configure Django for Heroku.
 import django_heroku
-DEBUG = False
 django_heroku.settings(locals())
 
 # Default primary key field type
