@@ -17,6 +17,7 @@ import dj_database_url
 
 if os.path.exists('env.py'):
     import env
+    
 import cloudinary
 
 # Cloudinary configuration
