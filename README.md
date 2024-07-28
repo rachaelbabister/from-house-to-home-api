@@ -1,4 +1,4 @@
-# FROM HOUSE TO HOME API
+# **FROM HOUSE TO HOME API**
 
 From House to Home API is a Django based web application for [From House to Home](https://github.com/rachaelbabister/from-house-to-home), designed for users to share their home improvement photos or inspirational photos. The API enables user authentication, profile management, leaving comments, liking other posts and following other users.
 
@@ -19,7 +19,38 @@ GITHUB PAGES
 
 <!-- TOC -->
 
-<!-- TOC -->
+- [**FROM HOUSE TO HOME API**](#from-house-to-home-api)
+- [**CONTENTS**](#contents)
+- [**Planning**](#planning)
+    - [**User Stories**](#user-stories)
+    - [**Data Models**](#data-models)
+    - [**Relationships**](#relationships)
+        - [User Profile:](#user-profile)
+        - [Posts:](#posts)
+        - [Comments:](#comments)
+        - [Likes:](#likes)
+        - [Followers:](#followers)
+        - [Notifications:](#notifications)
+    - [**Website Security**](#website-security)
+        - [env.py File](#envpy-file)
+    - [**Features/Apps**](#featuresapps)
+        - [**Profiles**](#profiles)
+        - [**Posts**](#posts)
+        - [**Category**](#category)
+        - [**Comments**](#comments)
+        - [**Likes**](#likes)
+        - [**Followers**](#followers)
+    - [**Testing**](#testing)
+    - [**Technologies & Packages**](#technologies--packages)
+        - [**Main Technologies**](#main-technologies)
+        - [**Packages**](#packages)
+    - [**Deployment**](#deployment)
+        - [**Environment & Settings**](#environment--settings)
+        - [**Deploying to Heroku**](#deploying-to-heroku)
+        - [**How to Fork**](#how-to-fork)
+        - [**How to Clone**](#how-to-clone)
+
+<!-- /TOC -->
 
 ---
 
@@ -34,7 +65,6 @@ Separate user stories were created for the API from those created for the front-
 Various data models were drawn out before creating the actual models, to serve as a blueprint for database design, helping with concepts and organisation of the structure of a database.
 
 ![Database Schema](docs/images/datamodels.jpeg)\
-*Data Models for From House to Home*
 
 ## **Relationships**
 
@@ -137,13 +167,13 @@ Logged in users are able to follow and unfollow other users.
 
 ---
 
-## **Technologies & Packages
+## **Technologies & Packages**
 
 ### **Main Technologies**
 
-- JavaScript - for functionality.
-- Django - a Python based framework for backend development.
-- PostgreSQL from CI - a database to store all data.
+- **Django** - a Python based framework for backend development.
+- **JavaScript** - for functionality.
+- **PostgreSQL from CI** - a database to store all data.
 
 ### **Packages**
 
