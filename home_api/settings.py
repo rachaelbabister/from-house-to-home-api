@@ -52,6 +52,19 @@ JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
+if (
+    'ACCESS_TOKEN_LIFETIME' in os.environ and
+    'REFRESH_TOKEN_LIFETIME' in os.environ
+):
+    SIMPLE_JWT = {
+        'ACCESS_TOKEN_LIFETIME': timedelta(
+            seconds=int(os.environ.get('ACCESS_TOKEN_LIFETIME'))
+        ),
+        'REFRESH_TOKEN_LIFETIME': timedelta(
+            seconds=int(os.environ.get('REFRESH_TOKEN_LIFETIME'))
+        ),
+    }
+
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'home_api.serializers.CurrentUserSerializer'
 }
@@ -71,8 +84,27 @@ ALLOWED_HOSTS = [
                 '127.0.0.1',
                 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-rachaelbabi-fromhouseto-smod0rh4ttt.ws-eu115.gitpod.io']
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
 
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(
+        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
+    ).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-rachaelbabi-fromhouseto-smod0rh4ttt.ws-eu115.gitpod.io']
 
 # Application definition
 
@@ -115,21 +147,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
-
-CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'home_api.urls'
 
