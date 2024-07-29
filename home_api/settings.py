@@ -104,7 +104,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOW_CREDENTIALS = True
 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-rachaelbabi-fromhouseto-smod0rh4ttt.ws-eu115.gitpod.io', 'https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://8000-rachaelbabi-fromhouseto-d730yx9tli3.ws-eu115.gitpod.io', 'https://*.127.0.0.1']
 
 # Application definition
 
