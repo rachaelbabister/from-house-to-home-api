@@ -4,6 +4,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from home_api.permissions import IsOwnerOrReadOnly
 from .models import Post, Category
 from .serializers import PostSerializer
+import logging
 
 
 class PostList(generics.ListCreateAPIView):
@@ -44,12 +45,19 @@ class PostList(generics.ListCreateAPIView):
     ]
     
     def perform_create(self, serializer):
-        category_name = self.request.data.get('category', None)
-        if category_name:
-            category = Category.objects.get(name=category_name)
+        try:
+            logger.info(f"Incoming data: {self.request.data}")
+
+            category_name = self.request.data.get('category')
+            category = None
+            
+            if category_name:
+                category, created = Category.objects.get_or_create(name=category_name)
+            
             serializer.save(owner=self.request.user, category=category)
-        else:
-            serializer.save(owner.request.user)
+        except Exception as e:
+            logger.error(f"Error in perform_create: {e}")
+            raise
         
         
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
