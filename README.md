@@ -64,7 +64,7 @@ Separate user stories were created for the API from those created for the front-
 
 Various data models were drawn out before creating the actual models, to serve as a blueprint for database design, helping with concepts and organisation of the structure of a database.
 
-![Database Schema](docs/images/datamodels.jpeg)\
+![Database Schema](docs/images/datamodels.jpeg)
 
 ## **Relationships**
 
@@ -163,6 +163,7 @@ Logged in users are able to follow and unfollow other users.
 ---
 
 ## **Testing**
+
 
 
 ---
