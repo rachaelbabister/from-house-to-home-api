@@ -4,7 +4,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from home_api.permissions import IsOwnerOrReadOnly
 from .models import Post, Category
 from .serializers import PostSerializer
-import logging
 
 
 class PostList(generics.ListCreateAPIView):
@@ -45,21 +44,17 @@ class PostList(generics.ListCreateAPIView):
     ]
     
     def perform_create(self, serializer):
-        try:
-            logger.info(f"Incoming data: {self.request.data}")
-
-            category_name = self.request.data.get('category')
-            category = None
-            
-            if category_name:
-                category, created = Category.objects.get_or_create(name=category_name)
-            
+        """
+        Creates new post
+        """
+        category_name = self.request.data.get('category', None)
+        if category_name:
+            category = Category.objects.get(name=category_name)
             serializer.save(owner=self.request.user, category=category)
-        except Exception as e:
-            logger.error(f"Error in perform_create: {e}")
-            raise
-        
-        
+        else:
+            serializer.save(owner=self.request.user)
+
+
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve a post and edit or delete it if you own it.
