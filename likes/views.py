@@ -23,3 +23,17 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
     permission_classes = [IsOwnerOrReadOnly]
+    
+
+class LikedPosts(generics.ListAPIView):
+    """
+    Show likes for liked posts
+    """
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        liked_posts = Like.objects.filter(
+            owner=user).values_list('post', flat=True)
+        return Post.objects.filter(id__in=liked_posts).order_by('-created_on')

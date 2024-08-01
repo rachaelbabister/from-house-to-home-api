@@ -24,3 +24,18 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
     queryset = Follower.objects.all()
     serializer_class = FollowerSerializer
     permission_classes = [IsOwnerOrReadOnly]
+
+
+class FollowedPosts(generics.ListAPIView):
+    """
+    Show posts from followed users.
+    """
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        followed_users = Follower.objects.filter(
+            owner=user).values_list('followed', flat=True)
+        return Post.objects.filter(
+                owner__in=followed_users).order_by('-created_on')
