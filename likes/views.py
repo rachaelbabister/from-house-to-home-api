@@ -2,6 +2,8 @@ from rest_framework import generics, permissions
 from home_api.permissions import IsOwnerOrReadOnly
 from likes.models import Like
 from likes.serializers import LikeSerializer
+from posts.models import Post
+from posts.serializers import PostSerializer
 
 
 class LikeList(generics.ListCreateAPIView):

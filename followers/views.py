@@ -2,6 +2,8 @@ from rest_framework import generics, permissions
 from home_api.permissions import IsOwnerOrReadOnly
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
+from posts.models import Post
+from posts.serializers import PostSerializer
 
 
 class FollowerList(generics.ListCreateAPIView):
