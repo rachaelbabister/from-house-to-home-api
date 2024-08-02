@@ -16,7 +16,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default-image_qpztio', blank=True
     )
-    
+
     category = models.ForeignKey(Category, null=True, blank=True,
                                  on_delete=models.SET_NULL)
 

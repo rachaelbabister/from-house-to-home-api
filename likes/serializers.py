@@ -1,5 +1,5 @@
-from django.db import IntegrityError
 from rest_framework import serializers
+from django.db import IntegrityError
 from likes.models import Like
 
 

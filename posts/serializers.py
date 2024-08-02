@@ -16,18 +16,19 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.IntegerField(read_only=True)
     comments_count = serializers.IntegerField(read_only=True)
     category_name = serializers.ReadOnlyField(source='category.name')
-    
+
     category = serializers.SlugRelatedField(
         queryset=Category.objects.all(),
         slug_field='name',
         allow_null=True,
         required=False
     )
-    
+
     def validate_image(self, value):
         """
         Validates the image size and dimensions.
-        Validation Error will appear if image size or dimensions exceed the limits.
+        Validation Error will appear if image size
+        or dimensions exceed the limits.
         """
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError(
@@ -42,11 +43,11 @@ class PostSerializer(serializers.ModelSerializer):
                 'Image width larger than 4096px!'
             )
         return value
-    
+
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
+
     def get_like_id(self, obj):
         """
         Retrieves the ID of the like linked to the post when logged in.
@@ -58,7 +59,7 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return like.id if like else None
         return None
-    
+
     def get_category_name(self, obj):
         """
         Retrieves the name of the category linked to the post, if any.

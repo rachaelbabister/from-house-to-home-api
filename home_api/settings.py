@@ -17,7 +17,7 @@ import dj_database_url
 
 if os.path.exists('env.py'):
     import env
-    
+
 import cloudinary
 
 # Cloudinary configuration
@@ -80,7 +80,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
                 os.environ.get('ALLOWED_HOST'),
-                '8000-rachaelbabi-fromhouseto-smod0rh4ttt.ws-eu115.gitpod.io', 
+                '8000-rachaelbabi-fromhouseto-smod0rh4ttt.ws-eu115.gitpod.io',
                 '127.0.0.1',
                 ]
 

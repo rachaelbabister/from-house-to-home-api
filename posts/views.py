@@ -1,5 +1,5 @@
-from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 from home_api.permissions import IsOwnerOrReadOnly
 from .models import Post, Category
@@ -14,10 +14,10 @@ class PostList(generics.ListCreateAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_on')
-    
+
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
+
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -42,7 +42,7 @@ class PostList(generics.ListCreateAPIView):
         # categories
         'category',
     ]
-    
+
     def perform_create(self, serializer):
         """
         Creates new post

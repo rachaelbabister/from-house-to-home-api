@@ -4,14 +4,14 @@ From House to Home API is a Django based web application for [From House to Home
 
 ![From House to Home](docs/images/FromHouseToHome-logo.jpg)
 
-LIVE SITE
+**LIVE SITE**
 
 [You can view the live web application here.](https://from-house-to-home-b7afcfcc32e9.herokuapp.com/)
 
-GITHUB PAGES
+**GITHUB PAGES**
 
-[You can view the API GitHub code pages here.](https://github.com/rachaelbabister/from-house-to-home-api)<br>
-[You can view the Front-End GitHub code pages here.](https://github.com/rachaelbabister/from-house-to-home)
+[API GitHub Repository](https://github.com/rachaelbabister/from-house-to-home-api)<br>
+[Frontend GitHub Repository](https://github.com/rachaelbabister/from-house-to-home)
 
 ---
 
@@ -155,16 +155,15 @@ Logged in users are able to follow and unfollow other users.
 - /followers/: to list (**GET**) profiles.
 - /followers/:id/: to show (**GET**) or delete (**DELETE**) a follow.
 
-<details>
-<summary>Django Admin screenshot for From House to Home</summary>
-<img src="docs/screenshots/django-admin.webp">
-</details>
+
+![Django admin screenshot](docs/screenshots/django-admin.webp)
+
 
 ---
 
 ## **Testing**
 
-
+[Testing for the API can be found in a separate file - TESTING.md](TESTING.md)
 
 ---
 

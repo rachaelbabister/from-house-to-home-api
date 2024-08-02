@@ -1,5 +1,5 @@
-from django.db.models import Count
 from rest_framework import generics, filters
+from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 from home_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
@@ -32,8 +32,8 @@ class ProfileList(generics.ListAPIView):
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
     ]
-    
-    
+
+
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
     Retrieve or update a profile if you are the owner.

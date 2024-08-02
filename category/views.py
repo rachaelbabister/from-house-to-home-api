@@ -13,7 +13,7 @@ class CategoryList(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
+
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
 
