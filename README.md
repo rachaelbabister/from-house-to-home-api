@@ -1,6 +1,6 @@
 # **FROM HOUSE TO HOME API**
 
-From House to Home API is a Django based web application for [From House to Home](https://github.com/rachaelbabister/from-house-to-home), designed for users to share their home improvement photos or inspirational photos. The API enables user authentication, profile management, leaving comments, liking other posts and following other users.
+From House to Home API is a Django-based web application for [From House to Home](https://github.com/rachaelbabister/from-house-to-home), designed for users to share their home improvement photos or inspirational photos. The API enables user authentication, profile management, leaving comments, liking other posts and following other users.
 
 ![From House to Home](docs/images/FromHouseToHome-logo.jpg)
 
@@ -31,24 +31,26 @@ From House to Home API is a Django based web application for [From House to Home
         - [Likes:](#likes)
         - [Followers:](#followers)
         - [Notifications:](#notifications)
-    - [**Website Security**](#website-security)
-        - [env.py File](#envpy-file)
-    - [**Features/Apps**](#featuresapps)
-        - [**Profiles**](#profiles)
-        - [**Posts**](#posts)
-        - [**Category**](#category)
-        - [**Comments**](#comments)
-        - [**Likes**](#likes)
-        - [**Followers**](#followers)
-    - [**Testing**](#testing)
-    - [**Technologies & Packages**](#technologies--packages)
-        - [**Main Technologies**](#main-technologies)
-        - [**Packages**](#packages)
-    - [**Deployment**](#deployment)
-        - [**Environment & Settings**](#environment--settings)
-        - [**Deploying to Heroku**](#deploying-to-heroku)
-        - [**How to Fork**](#how-to-fork)
-        - [**How to Clone**](#how-to-clone)
+- [**Website Security**](#website-security)
+    - [env.py File](#envpy-file)
+- [**Features/Apps**](#featuresapps)
+    - [**Profiles**](#profiles)
+    - [**Posts**](#posts)
+    - [**Category**](#category)
+    - [**Comments**](#comments)
+    - [**Likes**](#likes)
+    - [**Followers**](#followers)
+    - [**Notifications**](#notifications)
+- [**Testing**](#testing)
+- [**Technologies & Packages**](#technologies--packages)
+    - [**Main Technologies**](#main-technologies)
+    - [**Packages**](#packages)
+- [**Deployment**](#deployment)
+    - [**Environment & Settings**](#environment--settings)
+    - [**Deploying to Heroku**](#deploying-to-heroku)
+    - [**How to Fork**](#how-to-fork)
+    - [**How to Clone**](#how-to-clone)
+- [**Credits**](#credits)
 
 <!-- /TOC -->
 
@@ -58,7 +60,7 @@ From House to Home API is a Django based web application for [From House to Home
 
 ## **User Stories**
 
-Separate user stories were created for the API from those created for the front-end of the project, however they were all added to the same project board and separated using a different Epic called Backend. That way the whole development process was visible on the same board. You can view the user stories on [this project board](https://github.com/users/rachaelbabister/projects/4).
+Separate user stories were created for the API from those created for the front end of the project, however they were all added to the same project board and separated using a different Epic called Backend. That way the whole development process was visible on the same board. You can view the user stories on [this project board](https://github.com/users/rachaelbabister/projects/4).
 
 ## **Data Models**
 
@@ -73,7 +75,7 @@ Various data models were drawn out before creating the actual models, to serve a
 
 ### Posts:
 - User (OneToMany): Each post is created and uploaded by a user. This relationship indicates a OneToMany relationship, where one user can create multiple posts, but each post is associated with only one user.
-- Category (ManyToOne): Each post can belong to a category (optional). This relationship indicates a ManyToOne relationship, where multiple posts can belong to the same category, but each post is linked to one one category.
+- Category (ManyToOne): Each post can belong to a category (optional). This relationship indicates a ManyToOne relationship, where multiple posts can belong to the same category, but each post is linked to one category.
 
 ### Comments:
 - Recipe Post (OneToMany): Comments are associated with posts, following a OneToMany relationship. Each post can have multiple comments, but each comment is linked to only one post.
@@ -90,23 +92,23 @@ Various data models were drawn out before creating the actual models, to serve a
 - User (ManyToOne): Each notification is associated with a single user, creating a ManyToOne relationship. A user can receive multiple notifications, but each notification is linked to only one user.
 - Post (ManyToOne): This represents a ManyToOne relationship where each notification can be associated with a single post, but a post can generate multiple notifications.
 - Comment (ManyToOne): This represents a ManyToOne relationship where each notification can be associated with a single comment, but a comment can generate multiple notifications.
-- Like (ManyToOne):This represents a ManyToOne relationship where each notification can be linked to a single like, but a like can generate multiple notifications.
+- Like (ManyToOne): This represents a ManyToOne relationship where each notification can be linked to a single like, but a like can generate multiple notifications.
 - Follower (ManyToOne): This represents a ManyToOne relationship where each notification can be associated with a specific follower, but each follower can generate multiple notifications.
 
 ---
 
-## **Website Security**
+# **Website Security**
 
-### env.py File
+## env.py File
 - API keys and databases are stored in the env.py which is not included in version control to prevent exposure.
 
 ---
 
-## **Features/Apps**
+# **Features/Apps**
 
 To explain the features of the API, it is easier to break them down by Apps. A short explanation of each app is detailed below.
 
-### **Profiles**
+## **Profiles**
 
 When a user registers on the app, a Profile is automatically created for them. This can then be updated by the user should they wish.
 
@@ -114,7 +116,7 @@ When a user registers on the app, a Profile is automatically created for them. T
 - **/profiles/**: to list (GET) profiles.
 - **/profiles/:id/**: to show (GET) or update (PUT) a profile.
 
-### **Posts**
+## **Posts**
 
 Posts can be viewed by any user, whether they are logged in or not. However, only registered users who are logged in can create, update and delete a post. 
 
@@ -124,60 +126,64 @@ Posts can be filtered and searched.
 - **/posts/**: to list (GET) or create (POST) posts.
 - **/posts/:id/**: to show (GET), update (PUT) or delete (DELETE) a post.
 
-### **Category**
+## **Category**
 
 Categories are used to list posts in specific topics, to make it easier for a user to find posts related to that topic. A user can also select a category when creating a post, but they do not have the ability to create, update or delete categories.
 
 **API Endpoints:**
 - **/category/**: to list (GET) categories.
 
-### **Comments**
+## **Comments**
 
-Logged in users can engage with posts by leaving their own comments. Users are able to create, update and delete comments.
+Logged-in users can engage with posts by leaving their own comments. Users are able to create, update and delete comments.
 
 **API Endpoints:**
 - **/comments/**: to list (GET) all comments or create (POST) a new comment.
 - **/comments/:id/**: to show (GET) a specific comment, update (PUT) or delete (DELETE) a comment.
 
-### **Likes**
+## **Likes**
 
-Logged in users are able to like posts or other user profiles. Users are able to see their likes and delete them if they wish.
+Logged-in users are able to like posts or other user profiles. Users are able to see their likes and delete them if they wish.
 
 **API Endpoints:**
 - **/likes/**: to list (GET) or create (POST) likes.
 - **/likes/:id/**: to show (GET) or delete (DELETE) a like.
 
-### **Followers**
+## **Followers**
 
-Logged in users are able to follow and unfollow other users.
+Logged-in users are able to follow and unfollow other users.
 
 **API Endpoints:**
 - /followers/: to list (**GET**) profiles.
 - /followers/:id/: to show (**GET**) or delete (**DELETE**) a follow.
 
+## **Notifications**
 
+- Unfortunately, time didn't allow for me to put the notifications app into the project, but this would definitely be a future feature of the site.
+
+*Django admin screenshot*
 ![Django admin screenshot](docs/screenshots/django-admin.webp)
 
 
 ---
 
-## **Testing**
+# **Testing**
 
-[Testing for the API can be found in a separate file - TESTING.md](TESTING.md)
+[Testing for the API can be found here in a separate file - TESTING.md](TESTING.md)
 
 ---
 
-## **Technologies & Packages**
+# **Technologies & Packages**
 
-### **Main Technologies**
+## **Main Technologies**
 
-- **Django** - a Python based framework for backend development.
+- **Django** - a Python-based framework for backend development.
 - **JavaScript** - for functionality.
 - **PostgreSQL from CI** - a database to store all data.
 
-### **Packages**
+## **Packages**
 
-- **cloudinary==1.40.0 & django-cloudinary-storage==0.3.0** - Cloud based media hosting and storage.
+- **cloudinary==1.40.0 & django-cloudinary-storage==0.3.0** - Cloud-based media hosting and storage.
 - **dj-database-url==0.5.0** - Utility library for Django.
 - **dj-rest-auth==2.1.9** - Authentication and registration endpoints for Django REST framework.
 - **Django==4.2** - Python framework.
@@ -200,7 +206,7 @@ Logged in users are able to follow and unfollow other users.
 
 ---
 
-## **Deployment**
+# **Deployment**
 
 You can view the deployed API here: [From House to Home API](https://home-api-58bb6b7692c8.herokuapp.com/).
 - [Admin page](https://home-api-58bb6b7692c8.herokuapp.com/admin)
@@ -211,11 +217,11 @@ You can view the deployed API here: [From House to Home API](https://home-api-58
 - [Likes](https://home-api-58bb6b7692c8.herokuapp.com/likes)
 - [Followers](https://home-api-58bb6b7692c8.herokuapp.com/followers)
 
-### **Environment & Settings**
+## **Environment & Settings**
 
 - In your IDE open your env.py file or create one in the main directory if it hasn't been created for you.
 - Having created your cloud-based database, add the DATABASE_URL value and a SECRET_KEY value to the env.py file.
-- Open the settings.py file and import the env.py file and the DATABASE_URL and SECRETKEY file paths.
+- Open the settings.py file and import the env.py file and the DATABASE_URL and SECRET_KEY file paths.
 - Install Django and add to requirements.txt.
 - Create your project.
 - Add the STATIC files settings.
@@ -229,14 +235,14 @@ You can view the deployed API here: [From House to Home API](https://home-api-58
 - Create your apps - *python manage.py startapp <nameofapp>*.
 - Before you add, commit & push your files to GitHub, ensure DEBUG is set to False in your settings.py file.
 
-### **Deploying to Heroku**
+## **Deploying to Heroku**
 
-- Login or create an account on Heroku.com. Click 'New' and then 'Create New App'.
+- Log in or create an account on Heroku.com. Click 'New' and then 'Create New App'.
 - Give your project a unique name and select a region, then click 'Create App'.
-- Connect your Heroku project to your GitHub repository. Under deployment you can choose GitHub, find the relevant one and click 'Connect.
+- Connect your Heroku project to your GitHub repository. Under deployment you can choose GitHub, find the relevant one and click 'Connect'.
 - Once connected, go to the Settings tab and click on 'Reveal Config Vars'. Add the following:
   - CLOUDINARY_URL - copied URL from Cloudinary
-  - DATABASE_URl - copied URL from PostGre
+  - DATABASE_URL - copied URL from PostgreSQL
   - SECRET_KEY - a unique secret key
   - ALLOWED_HOST - with the value of your deployed Heroku application URL
   - DISABLE_COLLECTSTATIC - add 1 if this is to be disabled to prevent errors, or 0 if the app is in a state where errors will not be generated.
@@ -245,20 +251,25 @@ You can view the deployed API here: [From House to Home API](https://home-api-58
 - At the bottom of the deploy section, make sure you are connected to the main branch and then click Deploy Branch.
 - You can then view your live site.
 
-### **How to Fork**
+## **How to Fork**
 
-To fork a repository on Github, follow these steps:
+To fork a repository on GitHub, follow these steps:
 
-- Log in to Github - or step up a new account.
+- Log in to GitHub - or set up a new account.
 - Click on the repository name.
 - Click the Fork button in the top right corner.
 
-### **How to Clone**
+## **How to Clone**
 
-To clone a repository on Github, follow these steps:
+To clone a repository on GitHub, follow these steps:
 
-- Log in to Github - or step up a new account.
+- Log in to GitHub - or set up a new account.
 - Find or create your repository.
 - Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 - Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 - Type 'git clone' into the terminal and paste the link you copied in step 3. Press enter.
+
+---
+# **Credits**
+
+All credits and acknowledgements have been detailed in the main [Frontend Repo README document](https://github.com/rachaelbabister/from-house-to-home?tab=readme-ov-file#credits).

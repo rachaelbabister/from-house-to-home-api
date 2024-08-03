@@ -31,6 +31,8 @@ class PostList(generics.ListCreateAPIView):
     search_fields = [
         'owner__username',
         'title',
+        'content',
+        'category_name',
     ]
     filterset_fields = [
         # user feed
