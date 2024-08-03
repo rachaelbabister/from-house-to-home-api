@@ -32,7 +32,7 @@ class PostList(generics.ListCreateAPIView):
         'owner__username',
         'title',
         'content',
-        'category_name',
+        'category',
     ]
     filterset_fields = [
         # user feed
